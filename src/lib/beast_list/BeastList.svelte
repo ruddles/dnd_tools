@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { parse } from 'postcss';
-
 	import type { Beast, BeastSpeed } from 'src/types/beast';
 	import type { BeastDictionary } from 'src/types/beast_dictionary';
 	import { createEventDispatcher } from 'svelte';
+	import { formatCr } from '../beast_utils';
 
 	export const max_cr = 2;
 	export let beasts_dictionary: BeastDictionary;
@@ -21,15 +20,6 @@
 	const selectBeast = (beast: Beast) => {
 		dispatch('beast_selected', beast);
 	};
-
-	const formatCRHeader = (cr: number) => {
-		if (cr == 0 || cr >= 1) {
-			return cr.toString();
-		}
-
-		const dnom = 1 / cr;
-		return `1/${dnom}`;
-	};
 </script>
 
 <nav class="h-full overflow-y-auto" aria-label="Beasts">
@@ -41,7 +31,7 @@
 			<div
 				class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500"
 			>
-				<h3>CR: {formatCRHeader(cr)}</h3>
+				<h3>CR: {formatCr(cr)}</h3>
 			</div>
 
 			<ul class="relative z-0 divide-y divide-gray-200">

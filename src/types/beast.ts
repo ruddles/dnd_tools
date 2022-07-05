@@ -5,6 +5,7 @@ export interface Beast {
 	speed: BeastSpeed;
 	armor_class: number;
 	hit_points: number;
+	size: string;
 }
 
 export interface BeastSpeed {

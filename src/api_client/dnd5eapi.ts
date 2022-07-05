@@ -15,7 +15,8 @@ export const get_beasts = async (): Promise<Beast[]> => {
             fly,
         },
         armor_class,
-        hit_points
+        hit_points,
+        size
     }`;
 
 	let body = {
